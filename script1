@@ -1,0 +1,24 @@
+<script>
+
+  /**
+    * Do not remove this section; it allows our team to troubleshoot and track feature adoption.
+    * TS:0002-07-017
+  */
+setTimeout(function(){
+  lp.jQuery(function($) {
+
+    // Replace email_address with the actual ID of your form field.
+    var field = 'Email';
+
+    // Optionally change this to customize the validation error that your visitors will see if they enter a webmail address.
+    var message = 'Please enter your work mail address.';
+
+    var rules = module.lp.form.data.validationRules[field];
+    $.validator.addMethod('notWebmail', function(value, field) {
+      var valid = /\@(?!(me|mac|icloud|gmail|googlemail|hotmail|live|msn|outlook|yahoo|ymail|aol)\.)/.test(value.toLowerCase());
+      return valid || (!rules.required && !value);
+    }, message);
+    rules.notWebmail = true;
+
+  });
+}, 500);</script>
