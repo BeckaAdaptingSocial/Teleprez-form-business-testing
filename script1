@@ -1,24 +1,38 @@
-<script>
+<script  type="text/javascript">
 
-  /**
-    * Do not remove this section; it allows our team to troubleshoot and track feature adoption.
-    * TS:0002-07-017
-  */
-setTimeout(function(){
-  lp.jQuery(function($) {
+var $ = jQuery;
 
-    // Replace email_address with the actual ID of your form field.
-    var field = 'Email';
+$(document).ready(function(e){
+	
 
-    // Optionally change this to customize the validation error that your visitors will see if they enter a webmail address.
-    var message = 'Please enter your work mail address.';
+ $('#form-submit-button').click(function(){
+		 
 
-    var rules = module.lp.form.data.validationRules[field];
-    $.validator.addMethod('notWebmail', function(value, field) {
-      var valid = /\@(?!(me|mac|icloud|gmail|googlemail|hotmail|live|msn|outlook|yahoo|ymail|aol)\.)/.test(value.toLowerCase());
-      return valid || (!rules.required && !value);
-    }, message);
-    rules.notWebmail = true;
+ var email = $('#Email').val();
 
-  });
-}, 500);</script>
+ var reg = /^([w-.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([w-]+.)+[w-]{
+			2,
+			4
+		})?$/;
+
+  if (reg.test(email)){
+			
+
+ return 0;
+
+		}
+
+ else{
+			
+
+ alert('Please Enter Business Email Address');
+
+ return false;
+
+		}
+
+	});
+
+});
+
+</script>
