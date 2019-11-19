@@ -3,28 +3,17 @@
 var $ = jQuery;
 
 $(document).ready(function(e){
-	
-
  $('#form-submit-button').click(function(){
-		 
-
  var email = $('#Email').val();
-
  var reg = /^([w-.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([w-]+.)+[w-]{
 			2,
 			4
 		})?$/;
-
   if (reg.test(email)){
-			
-
  return 0;
+	}
 
-		}
-
- else{
-			
-
+ else{		
  alert('Please Enter Business Email Address');
 
  return false;
