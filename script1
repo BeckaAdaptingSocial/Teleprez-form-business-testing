@@ -1,27 +1,33 @@
-<script  type="text/javascript">
+<script>
+jQuery(document).ready(function($)
+{
 
-var $ = jQuery;
+ $('#email').blur(function() {  
 
-$(document).ready(function(e){
- $('#form-submit-button').click(function(){
- var email = $('#Email').val();
- var reg = /^([w-.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([w-]+.)+[w-]{
-			2,
-			4
-		})?$/;
-  if (reg.test(email)){
- return 0;
-	}
+   $(".error").hide();
+   var hasError = false;
+   var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+   var emailblockReg =
+    /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
 
- else{		
- alert('Please Enter Business Email Address');
+   var emailaddressVal = $("input[type='email']").val();
+   if(emailaddressVal == '') {
+     $("input[type='email']").after('<span class="error">Please enter your email address.</span>');
+     hasError = true;
+   }
 
- return false;
+   else if(!emailReg.test(emailaddressVal)) {
+     $("input[type='email']").after('<span class="error">Enter a valid email address.</span>');
+     hasError = true;
+   }
 
-		}
+   else if(!emailblockReg.test(emailaddressVal)) {
+     $("input[type='email']").after('<span class="error">Please enter bussiness email.</span>');
+     hasError = true
+   }
 
-	});
+   if(hasError == true) { return false; }
 
+   });
 });
-
 </script>
